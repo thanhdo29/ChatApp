@@ -11,15 +11,15 @@ const _layout = () => {
             options={{title:"Chat", headerShown:false}}
         />
         <Tabs.Screen 
-            name='BottonTabTemplate/ContactTemplate'
+            name='BottonTabTemplate/Contact'
             options={{title:"Contact", headerShown:false}}
         />
         <Tabs.Screen 
-            name='BottonTabTemplate/ProfileTemplate'
+            name='BottonTabTemplate/Profile'
             options={{title:"Profile", headerShown:false}}
         />
         <Tabs.Screen 
-            name='BottonTabTemplate/SettingTemplate'
+            name='BottonTabTemplate/Setting'
             options={{title:"Setting", headerShown:false}}
         />
     </Tabs>

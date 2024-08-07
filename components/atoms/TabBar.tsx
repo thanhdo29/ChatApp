@@ -6,9 +6,9 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 const TabBar = ({ state, descriptors, navigation }: any) => {
     const icons: Record<string, (props: any) => JSX.Element> = {
         index: (props: any) => <Ionicons name="chatbubble-ellipses-outline" size={24} color="black" {...props} />,
-        "BottonTabTemplate/ContactTemplate": (props: any) => <MaterialCommunityIcons name="contacts" size={24} color="black" {...props} />,
-        "BottonTabTemplate/ProfileTemplate": (props: any) => <Ionicons name="person-circle-outline" size={24} color="black" {...props} />,
-        "BottonTabTemplate/SettingTemplate": (props: any) => <Ionicons name="settings-outline" size={24} color="black" {...props} />
+        "BottonTabTemplate/Contact": (props: any) => <MaterialCommunityIcons name="contacts" size={24} color="black" {...props} />,
+        "BottonTabTemplate/Profile": (props: any) => <Ionicons name="person-circle-outline" size={24} color="black" {...props} />,
+        "BottonTabTemplate/Setting": (props: any) => <Ionicons name="settings-outline" size={24} color="black" {...props} />
     }
     return (
         <View style={styles.tabBar}>
