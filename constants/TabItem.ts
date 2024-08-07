@@ -5,8 +5,3 @@ interface TabItem {
     iconTypr:'MaterialCommunityIcons' | 'AntDesign' | 'Ionicons'
     component:React.ComponentType<any>
 }
-// const tabItem:TabItem[]=[
-//     {
-
-//     }
-// ]

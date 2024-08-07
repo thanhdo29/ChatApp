@@ -1,14 +1,13 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import ChatTemplate from '@/components/templates/ChatTemplate';
 
-const ChatTemplate = () => {
+const Chat = () => {
   return (
-    <View>
-      <Text>index</Text>
-    </View>
+    <ChatTemplate/>
   )
 }
 
-export default ChatTemplate
+export default Chat
 
 const styles = StyleSheet.create({})
