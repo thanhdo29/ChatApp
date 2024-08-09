@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
         fontWeight: "600"
     },
     notePerson: {
-        fontSize: 12
+        fontSize: 12,
+        marginTop:3
     }
 })
