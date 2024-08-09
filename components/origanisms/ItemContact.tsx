@@ -7,8 +7,8 @@ type Props = {
     namePerson:string,
     notePerson?:string,
     img:number | string
-    iconPhone?:React.ReactElement,
-    iconVideo?:React.ReactElement
+    iconPhone?: string| React.ReactElement,
+    iconVideo?:string| React.ReactElement
 }
 export const ItemContact = (props:Props):React.ReactElement=>{
     const soureImg= typeof props.img === 'number' ? props.img : {uri:''} 
@@ -33,12 +33,10 @@ const styles=StyleSheet.create({
         alignItems:"center"
     },
     viewLeft:{
-        flex:1,
         flexDirection:"row",
         alignItems:"center"
     },
     viewRight:{
-        flex:1,
         flexDirection:"row",
         alignItems:"center"
     },
