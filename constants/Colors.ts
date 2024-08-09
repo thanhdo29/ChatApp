@@ -20,7 +20,8 @@ export const colors = {
     white:'#fff',
     darkChestnut: '#993F3F',
     spanishGray: '#949494',
-    neutralGray: '#797C7B'
+    neutralGray: '#797C7B',
+    red:"#F04A4C"
   },
   dark: {
     text: '#ECEDEE',
@@ -33,7 +34,8 @@ export const colors = {
     white:'#fff',
     darkChestnut: '#993F3F',
     spanishGray: '#949494',
-    neutralGray: '#797C7B'
+    neutralGray: '#797C7B',
+    red:"#F04A4C"
   },
 };
 
