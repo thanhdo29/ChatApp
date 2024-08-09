@@ -1,21 +1,26 @@
 interface DataUser {
+    id:string,
     img:number,
     name:string
 }
-const dataUser:DataUser[]=[
+export const dataUser:DataUser[]=[
     {
-        img:require('@/assets/images/avt2.png'),
+        id:'1',
+        img:require('@/assets/images/avt4.png'),
         name:"Đỗ Tuấn Thành"
     },
     {
+        id:'2',
         img:require('@/assets/images/avatar.png'),
         name:"Lương Văn Ngọc"
     },
     {
+        id:'3',
         img:require('@/assets/images/avt3.png'),
         name:"Đỗ Xuân Đức"
     },
     {
+        id:'4',
         img:require('@/assets/images/avt4.png'),
         name:"Hoàng Duy An"
     }
