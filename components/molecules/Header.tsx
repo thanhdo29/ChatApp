@@ -1,7 +1,7 @@
 import { isNil, isNumber } from "lodash"
 import React, { ReactElement } from "react"
-import { Button, Image, StyleSheet, Text, TouchableOpacity, useColorScheme, View } from "react-native"
-import { RenderIcon } from "../atoms/RenderIcon"
+import { Image, StyleSheet, Text, TouchableOpacity, useColorScheme, View } from "react-native"
+
 import getColors from "@/constants/Colors"
 type Props = {
     iconLeft?: React.ReactElement
@@ -57,11 +57,11 @@ const styles = StyleSheet.create({
         justifyContent: "center"
     },
     textTitle: {
-        fontSize:24,
+        fontSize:18,
         fontWeight:'700'
     },
     textSubTitle: {
-
+        fontSize:14
     },
     containerTitle: {
         flex:1,
