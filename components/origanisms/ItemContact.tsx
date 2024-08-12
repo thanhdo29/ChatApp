@@ -19,8 +19,8 @@ export const ItemContact = (props:Props):React.ReactElement=>{
                 <ContentContact namePerson={props.namePerson} notePerson={props.notePerson}/>
             </View>
             <View style={styles.viewRight}>
-                {!isNil(props.iconPhone) && RenderIcon(props.iconPhone)}
-                {!isNil(props.iconVideo) && RenderIcon(props.iconVideo)}
+                {!isNil(props.iconPhone) && <RenderIcon icon={props.iconPhone}/>}
+                {!isNil(props.iconVideo) && <RenderIcon icon={props.iconVideo}/>}
             </View>
         </View>
     )
