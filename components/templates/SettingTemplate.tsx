@@ -1,4 +1,4 @@
-import { StyleSheet, Text, useColorScheme, View } from 'react-native'
+import { useColorScheme } from 'react-native'
 import React from 'react'
 import { Header } from '@/components/molecules/Header'
 import AntDesign from '@expo/vector-icons/AntDesign';
