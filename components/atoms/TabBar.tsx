@@ -1,15 +1,17 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React from 'react';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 const TabBar = ({ state, descriptors, navigation }: any) => {
+
     const icons: Record<string, (props: any) => JSX.Element> = {
-        index: (props: any) => <Ionicons name="chatbubble-ellipses-outline" size={24} color="black" {...props} />,
+        "BottonTabTemplate/Chat": (props: any) => <Ionicons name="chatbubble-ellipses-outline" size={24} color="black" {...props} />,
         "BottonTabTemplate/Contact": (props: any) => <MaterialCommunityIcons name="contacts" size={24} color="black" {...props} />,
         "BottonTabTemplate/Profile": (props: any) => <Ionicons name="person-circle-outline" size={24} color="black" {...props} />,
-        "BottonTabTemplate/Setting": (props: any) => <Ionicons name="settings-outline" size={24} color="black" {...props} />
-    }
+        "BottonTabTemplate/Setting": (props: any) => <Ionicons name="settings-outline" size={24} color="black" {...props} />,
+    };
+
     return (
         <View style={styles.tabBar}>
             {state.routes.map((route: any, index: any) => {
@@ -20,9 +22,6 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
                         : options.title !== undefined
                             ? options.title
                             : route.name;
-                if (['_sitemap', '+not-found'].includes(route.name)) {
-                    return null
-                }
 
                 const isFocused = state.index === index;
 
@@ -64,10 +63,10 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
                 );
             })}
         </View>
-    )
-}
+    );
+};
 
-export default TabBar
+export default TabBar;
 
 const styles = StyleSheet.create({
     tabBar: {
@@ -92,4 +91,4 @@ const styles = StyleSheet.create({
         alignItems: "center",
         gap: 4
     }
-})
+});

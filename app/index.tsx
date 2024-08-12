@@ -1,13 +1,10 @@
-import { StyleSheet } from 'react-native'
+import LoginTemplate from '@/components/templates/LoginTemplate'
 import React from 'react'
-import ChatTemplate from '@/components/templates/ChatTemplate';
 
-const Chat = () => {
+const index = () => {
   return (
-    <ChatTemplate/>
+    <LoginTemplate/>
   )
 }
 
-export default Chat
-
-const styles = StyleSheet.create({})
+export default index

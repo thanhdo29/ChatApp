@@ -4,9 +4,14 @@ import EvilIcons from '@expo/vector-icons/EvilIcons';
 import { EditTextWithLabel } from '../atoms/EditTextWithLabel';
 import { PositiveButton } from '../atoms/PositiveButton';
 import getColors from '@/constants/Colors';
+import { useRouter } from 'expo-router';
 
 const LoginTemplate = () => {
     const colors = getColors(useColorScheme())
+    const router=useRouter()
+    const handleLogin=()=>{
+        router.replace('/BottonTabs')
+    }
     return (
         <View style={styles.container}>
             <EvilIcons name="arrow-left" size={40} color="black" style={styles.iconBack} />
@@ -27,7 +32,7 @@ const LoginTemplate = () => {
 
             <Text style={[styles.textForgotPass, { color: colors.darkChestnut }]}>Forgot Password</Text>
             <View style={{ marginTop: 42, paddingHorizontal: 8 }}>
-                <PositiveButton title="Login" />
+                <PositiveButton title="Login" onPress={()=>handleLogin()}/>
             </View>
             <View style={styles.separatorContainer}>
                 <View style={styles.separatorLine} />

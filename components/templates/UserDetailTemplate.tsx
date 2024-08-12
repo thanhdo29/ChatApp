@@ -5,10 +5,7 @@ import { Header } from '../molecules/Header';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import UserInfor from '../molecules/UserInfor';
 import TextInforUser from '../molecules/TextInforUser';
-import Ionicons from '@expo/vector-icons/Ionicons';
 import { RenderIcon } from '../atoms/RenderIcon';
-import Feather from '@expo/vector-icons/Feather';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import dataContactMethod from '@/constants/DataContactMethod';
 import Icon from '../atoms/Icons';
 
