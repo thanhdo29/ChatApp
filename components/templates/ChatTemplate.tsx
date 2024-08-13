@@ -7,8 +7,14 @@ import { dataUser } from '@/constants/DataUser';
 import { ItemListUser } from '../molecules/ItemListUser';
 import dataContact from '@/constants/DataContact';
 import { ItemMess } from '../origanisms/ItemMess';
+import { useRouter } from 'expo-router';
 
 const ChatTemplate = () => {
+  const router=useRouter()
+  const moveChatDetail=()=>{
+    router.push('/MessengerTemplate')
+    
+  }
   return (
     <ScrollView>
       <ContainerView>
@@ -44,7 +50,8 @@ const ChatTemplate = () => {
               messUser={item.note}
               messedTime='10'
               nameUser={item.name}
-              quantityMess='3' />
+              quantityMess='3' 
+              onPress={()=>moveChatDetail()}/>
           ))}
 
         </View>

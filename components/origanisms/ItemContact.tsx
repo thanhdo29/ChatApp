@@ -2,8 +2,8 @@ import React from "react"
 import { Image, StyleSheet, View } from "react-native"
 import { ContentContact } from "../molecules/ContentContact"
 import { RenderIcon } from "../atoms/RenderIcon"
-import AntDesign from '@expo/vector-icons/AntDesign';
 import { isNil } from "lodash"
+import { useRouter } from "expo-router";
 type Props = {
     backIcon?: React.ReactElement
     namePerson: string,
@@ -14,11 +14,17 @@ type Props = {
 }
 export const ItemContact = (props: Props): React.ReactElement => {
     const soureImg = typeof props.img === 'number' ? props.img : { uri: '' }
+    const router = useRouter()
+    const back = () => {
+        if (router.canGoBack()) {
+            router.back();
+        }
+    }
     return (
         <View style={styles.container}>
             {
                 !isNil(props.backIcon) &&
-                <RenderIcon icon={props.backIcon} />
+                <RenderIcon icon={props.backIcon} onPress={()=>back() } />
             }
             <View style={styles.viewLeft}>
                 <Image style={styles.img} source={soureImg} />
