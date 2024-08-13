@@ -10,10 +10,9 @@ import { ItemMess } from '../origanisms/ItemMess';
 import { useRouter } from 'expo-router';
 
 const ChatTemplate = () => {
-  const router=useRouter()
-  const moveChatDetail=()=>{
-    router.push('/MessengerTemplate')
-    
+  const router = useRouter()
+  const moveChatDetail = () => {
+    router.push('StackScreen/MessengerTemplate' as never);
   }
   return (
     <ScrollView>
@@ -50,8 +49,8 @@ const ChatTemplate = () => {
               messUser={item.note}
               messedTime='10'
               nameUser={item.name}
-              quantityMess='3' 
-              onPress={()=>moveChatDetail()}/>
+              quantityMess='3'
+              onPress={() => moveChatDetail()} />
           ))}
 
         </View>
