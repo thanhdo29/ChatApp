@@ -21,7 +21,11 @@ export const colors = {
     darkChestnut: '#993F3F',
     spanishGray: '#949494',
     neutralGray: '#797C7B',
-    red:"#F04A4C"
+    red:"#F04A4C",
+    paleMint:"#F3F6F6",
+    softAqua:"#EEFAF8",
+    powderBlue:"#F2F7FB"
+
   },
   dark: {
     text: '#ECEDEE',
@@ -35,7 +39,10 @@ export const colors = {
     darkChestnut: '#993F3F',
     spanishGray: '#949494',
     neutralGray: '#797C7B',
-    red:"#F04A4C"
+    red:"#F04A4C",
+    paleMint:"#F3F6F6",
+    softAqua:"#EEFAF8",
+    powderBlue:"#F2F7FB"
   },
 };
 
