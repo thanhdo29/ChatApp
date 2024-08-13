@@ -6,7 +6,8 @@ type ContainerProps = {
 };
 
 const ContainerView: React.FC<ContainerProps> = ({ children }) => {
-  return <View style={styles.container}>{children}</View>;
+  
+  return <View style={[styles.container, {backgroundColor:'white'}]}>{children}</View>;
 };
 
 export default ContainerView;
