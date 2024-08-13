@@ -6,6 +6,7 @@ const _layout = () => {
         <Stack>
             <Stack.Screen name='index' options={{ headerShown: false }} />
             <Stack.Screen name='BottonTabs' options={{ headerShown: false }} />
+            <Stack.Screen name='StackScreen/MessengerTemplate' options={{headerShown:false}}/>
         </Stack>
     );
 };
