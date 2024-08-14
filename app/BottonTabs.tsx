@@ -1,17 +1,17 @@
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import TabBar from '@/components/atoms/TabBar';
-import ChatTemplate from '@/components/templates/ChatTemplate';
 import ContactTemplate from '@/components/templates/ContactTemplate';
 import ProfileTemplate from '@/components/templates/ProfileTemplate';
 import SettingTemplate from '@/components/templates/SettingTemplate';
+import ChatListTemplate from '@/components/templates/ChatListTemplate';
 
 const BottonTabs = () => {
     const Tab = createBottomTabNavigator();
     return (
         <Tab.Navigator tabBar={props => <TabBar {...props} />}>
             <Tab.Screen
-                component={ChatTemplate}
+                component={ChatListTemplate}
                 name='BottonTabTemplate/Chat'
                 options={{ title: "Chat", headerShown: false }}
             />

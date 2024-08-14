@@ -1,9 +1,9 @@
+import ChatListTemplate from '@/components/templates/ChatListTemplate'
 import React from 'react'
-import ChatTemplate from '@/components/templates/ChatTemplate'
 
 const Chat = () => {
   return (
-    <ChatTemplate/>
+    <ChatListTemplate/>
   )
 }
 
