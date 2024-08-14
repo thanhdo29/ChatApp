@@ -1,6 +1,6 @@
 import { isNil, isNumber } from "lodash"
 import React, { ReactElement } from "react"
-import { Image, StyleSheet, Text, TouchableOpacity, useColorScheme, View } from "react-native"
+import { Image, StyleSheet, Text, TouchableOpacity, useColorScheme, View, ViewProps } from "react-native"
 
 import getColors from "@/constants/Colors"
 type Props = {
@@ -9,21 +9,25 @@ type Props = {
     title?: string
     subTitle?: string
     position?: boolean
-}
+    onPressLeftIcon?: () => void
+    onPressRightIcon?: () => void
+} & ViewProps
+
 export const Header = (props: Props): React.ReactElement => {
     const colors = getColors(useColorScheme())
-    const renderIcon = (icon: number | ReactElement) => {
+    const renderIcon = (icon: number | ReactElement, onPress?: () => void) => {
         if (isNumber(icon)) {
             return <Image source={icon} />
         }
-        return <TouchableOpacity
-            style={{position: props.position === true ? 'absolute': undefined} }>
+        return <TouchableOpacity onPress={onPress}
+            style={{ position: props.position === true ? 'absolute' : undefined }}>
             {icon}
         </TouchableOpacity>
     }
     return (
+
         <View style={styles.container}>
-            {!isNil(props.iconLeft) && renderIcon(props.iconLeft)}
+            {!isNil(props.iconLeft) && renderIcon(props.iconLeft, props.onPressLeftIcon)}
 
             {!isNil(props.title) && isNil(props.subTitle) && (
                 <View style={styles.containerTitleAlone}>
@@ -57,17 +61,17 @@ const styles = StyleSheet.create({
         justifyContent: "center"
     },
     textTitle: {
-        fontSize:18,
-        fontWeight:'700'
+        fontSize: 18,
+        fontWeight: '700'
     },
     textSubTitle: {
-        fontSize:14
+        fontSize: 14
     },
     containerTitle: {
-        flex:1,
+        flex: 1,
         justifyContent: "center",
         alignItems: "center",
         marginTop: 60,
-        gap:15
+        gap: 15
     }
 })
