@@ -1,5 +1,5 @@
-import LoginTemplate from '@/components/templates/LoginTemplate'
 import React from 'react'
+import LoginTemplate from './StackScreen/LoginTemplate'
 
 const index = () => {
   return (

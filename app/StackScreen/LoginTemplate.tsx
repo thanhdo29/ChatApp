@@ -1,16 +1,19 @@
 import { Image, StyleSheet, Text, useColorScheme, View } from 'react-native'
 import React from 'react'
 import EvilIcons from '@expo/vector-icons/EvilIcons';
-import { EditTextWithLabel } from '../atoms/EditTextWithLabel';
-import { PositiveButton } from '../atoms/PositiveButton';
 import getColors from '@/constants/Colors';
 import { useRouter } from 'expo-router';
+import { EditTextWithLabel } from '@/components/atoms/EditTextWithLabel';
+import { PositiveButton } from '@/components/atoms/PositiveButton';
 
 const LoginTemplate = () => {
     const colors = getColors(useColorScheme())
     const router=useRouter()
     const handleLogin=()=>{
         router.replace('/BottonTabs')
+    }
+    const handleFogotPass=()=>{
+        router.push('/StackScreen/ForgotPassTemplate')
     }
     return (
         <View style={styles.container}>
@@ -30,7 +33,7 @@ const LoginTemplate = () => {
                 <EditTextWithLabel label="Password" />
             </View>
 
-            <Text style={[styles.textForgotPass, { color: colors.darkChestnut }]}>Forgot Password</Text>
+            <Text style={[styles.textForgotPass, { color: colors.darkChestnut }]} onPress={()=>handleFogotPass()}>Forgot Password</Text>
             <View style={{ marginTop: 42, paddingHorizontal: 8 }}>
                 <PositiveButton title="Login" onPress={()=>handleLogin()}/>
             </View>

@@ -7,6 +7,10 @@ const _layout = () => {
             <Stack.Screen name='index' options={{ headerShown: false }} />
             <Stack.Screen name='BottonTabs' options={{ headerShown: false }} />
             <Stack.Screen name='StackScreen/MessengerTemplate' options={{headerShown:false}}/>
+            <Stack.Screen name='StackScreen/ForgotPassTemplate' options={{headerShown:false}}/>
+            <Stack.Screen name='StackScreen/ForgotPassCodeTemplate' options={{headerShown:false}}/>
+            <Stack.Screen name='StackScreen/ResetPassTemplate' options={{headerShown:false}}/>
+            <Stack.Screen name='StackScreen/LoginTemplate' options={{headerShown:false}}/>
         </Stack>
     );
 };
