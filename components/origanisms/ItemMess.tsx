@@ -20,6 +20,7 @@ export const ItemMess = (props: Props): React.ReactElement => {
 }
 const styles = StyleSheet.create({
     containerMess: {
+        marginVertical:20,
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between"

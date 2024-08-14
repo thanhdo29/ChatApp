@@ -15,7 +15,7 @@ const ContactTemplate = () => {
         iconRight={<AntDesign name="search1" size={24} color="black" />} />
 
       {dataContact.map((item) => (
-        <ItemContact namePerson={item.name} notePerson={item.note} img={item.img} />
+        <ItemContact style={styles.containerItemContact} namePerson={item.name} notePerson={item.note} img={item.img} />
       ))}
     </ContainerView>
   )
@@ -24,5 +24,7 @@ const ContactTemplate = () => {
 export default ContactTemplate
 
 const styles = StyleSheet.create({
- 
+    containerItemContact:{
+      marginVertical:20
+    }
 })

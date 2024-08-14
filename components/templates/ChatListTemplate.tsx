@@ -15,7 +15,6 @@ const ChatListTemplate = () => {
     router.push('StackScreen/MessengerTemplate' as never);
   }
   return (
-    <ScrollView>
       <ContainerView>
         <Header
           title='Chat'
@@ -42,7 +41,7 @@ const ChatListTemplate = () => {
           />
         </View>
 
-        <View>
+        <ScrollView>
           {dataContact.map((item) => (
             <ItemMess
               imgUser={item.img}
@@ -53,10 +52,9 @@ const ChatListTemplate = () => {
               onPress={() => moveChatDetail()} />
           ))}
 
-        </View>
+        </ScrollView>
 
       </ContainerView>
-    </ScrollView>
   )
 }
 

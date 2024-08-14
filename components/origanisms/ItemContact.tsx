@@ -1,5 +1,5 @@
 import React from "react"
-import { Image, StyleSheet, View } from "react-native"
+import { Image, StyleSheet, View, ViewProps } from "react-native"
 import { ContentContact } from "../molecules/ContentContact"
 import { RenderIcon } from "../atoms/RenderIcon"
 import { isNil } from "lodash"
@@ -11,7 +11,7 @@ type Props = {
     img: number | string
     iconPhone?: string | React.ReactElement,
     iconVideo?: string | React.ReactElement
-}
+} & ViewProps
 export const ItemContact = (props: Props): React.ReactElement => {
     const soureImg = typeof props.img === 'number' ? props.img : { uri: '' }
     const router = useRouter()
@@ -21,7 +21,7 @@ export const ItemContact = (props: Props): React.ReactElement => {
         }
     }
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, props.style]}>
             {
                 !isNil(props.backIcon) &&
                 <RenderIcon icon={props.backIcon} onPress={()=>back() } />
@@ -39,7 +39,6 @@ export const ItemContact = (props: Props): React.ReactElement => {
 }
 const styles = StyleSheet.create({
     container: {
-        marginVertical: 20,
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center"
