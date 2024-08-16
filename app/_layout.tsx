@@ -11,6 +11,7 @@ const _layout = () => {
             <Stack.Screen name='StackScreen/ForgotPassCodeTemplate' options={{headerShown:false}}/>
             <Stack.Screen name='StackScreen/ResetPassTemplate' options={{headerShown:false}}/>
             <Stack.Screen name='StackScreen/LoginTemplate' options={{headerShown:false}}/>
+            <Stack.Screen name='StackScreen/RegisterTemplate' options={{headerShown:false}}/>
         </Stack>
     );
 };
