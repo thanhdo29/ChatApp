@@ -1,22 +1,23 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, TouchableOpacityProps, View } from 'react-native'
 import React from 'react'
 import { ContentContact } from '../molecules/ContentContact'
 
 type Props = {
     nameMethod: string,
     desMethod?: string,
-    imgMethod: React.ReactElement
-}
+    imgMethod: React.ReactElement,
+    onPress?:()=>void
+} & TouchableOpacityProps
 const ChooseMethodSetting = (props: Props): React.ReactElement => {
     return (
-        <View style={styles.container}>
+        <TouchableOpacity {...props} style={styles.container}>
             {props.imgMethod}
             <ContentContact
                 namePerson={props.nameMethod}
                 notePerson={props.desMethod}
                 style={{ marginLeft: 12 }}
             />
-        </View>
+        </TouchableOpacity>
     )
 }
 
