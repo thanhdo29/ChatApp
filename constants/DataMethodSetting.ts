@@ -37,7 +37,11 @@ const dataMethodSetting: DataMethodSetting[] = [
         typeIcon:Icons.Ionicons,
         nameIcon:"swap-vertical"
     },
-
+    {
+        nameMethod: 'Log out',
+        typeIcon:Icons.MaterialIcons,
+        nameIcon:"logout"
+    },
 ]
 
 export default dataMethodSetting
