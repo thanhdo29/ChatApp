@@ -12,7 +12,7 @@ export const EditTextWithLabel = (props: Props): React.ReactElement => {
             <Text style={styles.label}>{props.label}</Text>
             <View style={!isNil(props.icon) && styles.containerInputSearch}>
                 {!isNil(props.icon) && <RenderIcon icon={props.icon}/>}
-                <TextInput style={styles.input} />
+                <TextInput {...props} style={styles.input} />
             </View>
         </View>
     )
