@@ -9,7 +9,6 @@ import { useRouter } from 'expo-router';
 import { addDoc, collection } from 'firebase/firestore';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from '@/firebaseConfig';
-import { isNil, isUndefined } from 'lodash';
 
 const RegisterTemplate = () => {
     const router = useRouter();
