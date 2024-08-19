@@ -7,7 +7,7 @@ import { EditTextWithLabel } from '../../components/atoms/EditTextWithLabel';
 import { PositiveButton } from '../../components/atoms/PositiveButton';
 import { useRouter } from 'expo-router';
 import { addDoc, collection } from 'firebase/firestore';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth, db } from '@/firebaseConfig';
 
 const RegisterTemplate = () => {
@@ -31,6 +31,7 @@ const RegisterTemplate = () => {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
 
+            await updateProfile(user, { displayName: name })
             await addDoc(collection(db, 'users'), {
                 uid: user.uid,
                 name: name,
