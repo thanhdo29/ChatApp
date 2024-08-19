@@ -38,7 +38,7 @@ const RegisterTemplate = () => {
             });
             Alert.alert("Thông báo", "Đăng kí thành công")
         } catch (error) {
-            console.error('Error1: ' + error)
+            console.error('Error register: ' + error)
         }
 
     };
