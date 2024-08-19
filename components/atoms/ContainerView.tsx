@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, SafeAreaView } from 'react-native';
 
 type ContainerProps = {
   children: React.ReactNode;
@@ -7,15 +7,24 @@ type ContainerProps = {
 
 const ContainerView: React.FC<ContainerProps> = ({ children }) => {
   
-  return <View style={[styles.container, {backgroundColor:'white'}]}>{children}</View>;
+  return (
+    <SafeAreaView style={styles.safeArea}>
+      <View style={[styles.container, { backgroundColor: 'white' }]}>
+        {children}
+      </View>
+    </SafeAreaView>
+  );
 };
 
 export default ContainerView;
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     paddingHorizontal: 24,
-    paddingTop: 25,
+    paddingTop: 30,
   },
 });
