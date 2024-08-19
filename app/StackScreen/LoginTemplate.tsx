@@ -7,12 +7,17 @@ import { EditTextWithLabel } from '@/components/atoms/EditTextWithLabel';
 import { PositiveButton } from '@/components/atoms/PositiveButton';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '@/firebaseConfig';
+import useStorage from '@/hooks/useStorage';
+import { isNil } from 'lodash';
 
 const LoginTemplate = () => {
     const colors = getColors(useColorScheme())
     const router = useRouter()
     const [email, setEmail] = useState<string>('')
     const [pass, setPass] = useState<string>('')
+    const { setObjectItem } = useStorage()
+
+    const USER_LOGIN_APP = "USER-LOGIN-APP"
 
     const handleLogin = async () => {
         if (!email || !pass) {
@@ -22,14 +27,18 @@ const LoginTemplate = () => {
 
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, pass)
-            const user=userCredential.user
+            const user = userCredential.user
+            if (!isNil(user)) {
+                await setObjectItem(USER_LOGIN_APP, user).catch(e => {
+                    console.error(USER_LOGIN_APP + ": " + e)
+                })
+            }
             router.replace('/BottonTabs')
 
         } catch (error) {
             Alert.alert("Thông báo", "Đăng nhập thất bại")
-            console.error("Error login: "+error)
+            console.error("Error login: " + error)
         }
-        
     }
 
     const handleForgotPass = () => {
@@ -52,11 +61,11 @@ const LoginTemplate = () => {
                 <View style={{ flex: 1 }}></View>
             </View>
             <View style={styles.containerEditText}>
-                <EditTextWithLabel label="Email Address" value={email} onChangeText={setEmail}/>
+                <EditTextWithLabel label="Email Address" value={email} onChangeText={setEmail} />
             </View>
 
             <View style={styles.containerEditText}>
-                <EditTextWithLabel label="Password" value={pass} onChangeText={setPass}/>
+                <EditTextWithLabel label="Password" value={pass} onChangeText={setPass} />
             </View>
 
             <Text style={[styles.textForgotPass, { color: colors.darkChestnut }]} onPress={() => handleForgotPass()}>Forgot Password</Text>
