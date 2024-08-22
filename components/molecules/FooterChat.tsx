@@ -1,26 +1,37 @@
-import { StyleSheet, TextInput, useColorScheme, View, ViewProps } from 'react-native';
+import { StyleSheet, TextInput, TextInputProps, useColorScheme, View, ViewProps } from 'react-native';
 import React, { useState } from 'react';
 import Feather from '@expo/vector-icons/Feather';
 import { RenderIcon } from '../atoms/RenderIcon';
 import getColors from '@/constants/Colors';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 type Props = {
+    onSendMessage: (message: string) => void
+} & ViewProps & TextInputProps
 
-} & ViewProps
 const FooterChat = (props: Props) => {
     const colors = getColors(useColorScheme());
     const [message, setMessage] = useState<string>('')
+
+    const handleSendMessage = () => {
+        if (message.trim()) {
+            props.onSendMessage(message)
+            setMessage('')
+        }
+    }
     return (
         <View {...props} style={styles.container}>
             <RenderIcon icon={<Feather name="paperclip" size={24} color="black" />} />
             <TextInput
+                {...props}
                 style={[styles.input, { backgroundColor: colors.paleMint }]}
                 placeholder="Write your message"
+                value={message}
                 placeholderTextColor={colors.neutralGray}
                 onChangeText={(txt) => setMessage(txt)}
             />
             {message ?
                 (<RenderIcon
+                    onPress={handleSendMessage}
                     icon={<MaterialCommunityIcons name="send-circle" size={40} color={colors.royalPurple} />} />
                 ) :
                 (<View style={styles.iconsContainer}>
