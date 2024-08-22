@@ -1,5 +1,5 @@
 import { Alert, StyleSheet, useColorScheme } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Header } from '@/components/molecules/Header'
 import AntDesign from '@expo/vector-icons/AntDesign';
 import ContainerView from '@/components/atoms/ContainerView';
@@ -11,10 +11,25 @@ import { ItemContact } from '../origanisms/ItemContact';
 import { signOut } from 'firebase/auth';
 import { auth } from '@/firebaseConfig';
 import { useRouter } from 'expo-router';
+import useStorage from '@/hooks/useStorage';
 
 const SettingTemplate = () => {
   const colors = getColors(useColorScheme())
-  const router=useRouter()
+  const router = useRouter()
+  const [userLogin, setUserLogin] = useState<User | null>();
+  const { getObjectItem } = useStorage()
+  const USER_LOGIN_APP = "USER-LOGIN-APP"
+
+  useEffect(() => {
+    const getUserLogin = async () => {
+      const userLogin = await getObjectItem(USER_LOGIN_APP)
+      setUserLogin(userLogin as User)
+    }
+
+    getUserLogin()
+    console.log(userLogin)
+
+  }, [])
   const handleLogout = () => {
     Alert.alert("Xác nhận",
       "Bạn có chắc chắn đăng xuất không?",
@@ -64,7 +79,7 @@ const SettingTemplate = () => {
       <ItemContact
         style={styles.inforPerson}
         img={require('@/assets/images/avt2.png')}
-        namePerson='Đỗ Tuấn Thành'
+        namePerson={userLogin?.displayName!}
         notePerson='I am bad' />
       {
         dataMethodSetting.map((item) => (
