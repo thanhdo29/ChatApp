@@ -1,5 +1,5 @@
 import { FlatList, StyleSheet, TouchableOpacity, View, Text } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { ItemContact } from '../../components/origanisms/ItemContact'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import AntDesign from '@expo/vector-icons/AntDesign';
@@ -20,6 +20,7 @@ const MessengerTemplate = () => {
   const USER_LOGIN_APP = "USER-LOGIN-APP"
   const chatId = [userLogin?.uid, userMess.uid].sort().join('_');
   const chatId2 = [userMess.uid, userLogin?.uid].sort().join('_');
+  const flatListRef = useRef<FlatList>(null)
 
   useEffect(() => {
     const messagesRef = collection(db, 'chats', chatId2, 'messages');
@@ -33,6 +34,7 @@ const MessengerTemplate = () => {
         userSend: doc.data().userSend
       }))
       setMessages(messageList)
+      flatListRef.current?.scrollToEnd({ animated: true })
     })
 
     return () => unsubscribe()
@@ -82,6 +84,7 @@ const MessengerTemplate = () => {
               imgPerson={require('@/assets/images/avt2.png')} />
           )}
           keyExtractor={(item) => item.id}
+          ListFooterComponent={<View style={{ height: 80 }} />}
         />
         <FooterChat onSendMessage={(mess: string) => handleSendMessage(mess)} />
       </View>
