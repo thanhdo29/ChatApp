@@ -12,13 +12,13 @@ import { auth, db } from '@/firebaseConfig';
 
 const RegisterTemplate = () => {
     const router = useRouter();
-    const [name, setName] = useState<string>('');
+    const [displayName, setDisplayName] = useState<string>(''); 
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [confirmPassword, setConfirmPassword] = useState<string>('');
 
     const handleRegister = async () => {
-        if (!name || !email || !password || !confirmPassword) {
+        if (!displayName || !email || !password || !confirmPassword) {
             Alert.alert("Thông báo", "Vui lòng nhập đủ thông tin")
             return
         }
@@ -31,10 +31,10 @@ const RegisterTemplate = () => {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
 
-            await updateProfile(user, { displayName: name })
+            await updateProfile(user, { displayName })
             await addDoc(collection(db, 'users'), {
                 uid: user.uid,
-                name: name,
+                displayName,
                 email: email,
             });
             Alert.alert("Thông báo", "Đăng kí thành công")
@@ -60,8 +60,8 @@ const RegisterTemplate = () => {
             <View style={styles.containerContent}>
                 <EditTextWithLabel
                     label='Your name'
-                    value={name}
-                    onChangeText={setName}
+                    value={displayName} 
+                    onChangeText={setDisplayName} 
                 />
                 <EditTextWithLabel
                     label='Your email'
