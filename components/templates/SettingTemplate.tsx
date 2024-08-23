@@ -25,10 +25,7 @@ const SettingTemplate = () => {
       const userLogin = await getObjectItem(USER_LOGIN_APP)
       setUserLogin(userLogin as User)
     }
-
     getUserLogin()
-    console.log(userLogin)
-
   }, [])
   const handleLogout = () => {
     Alert.alert("Xác nhận",
@@ -84,6 +81,7 @@ const SettingTemplate = () => {
       {
         dataMethodSetting.map((item) => (
           <ChooseMethodSetting
+            key={item.id}
             onPress={() => handleMethodSetting(item.id)}
             imgMethod={
               <Icon name={item.nameIcon} type={item.typeIcon} color={colors.neutralGray} size={30}

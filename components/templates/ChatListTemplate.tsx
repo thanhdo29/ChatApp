@@ -72,10 +72,10 @@ const ChatListTemplate = () => {
         <FlatList
           showsHorizontalScrollIndicator={false}
           horizontal
-          data={dataUser}
-          keyExtractor={(item) => item.id}
+          data={users}
+          keyExtractor={(item) => item.uid}
           renderItem={({ item }) =>
-            <ItemListUser key={item.id} img={item.img} name={item.name} />
+            <ItemListUser key={item.uid} img={require('@/assets/images/avt2.png')} name={item.displayName} />
           }
         />
       </View>
@@ -83,6 +83,7 @@ const ChatListTemplate = () => {
       <ScrollView>
         {listUser.map((item) => (
           <ItemMess
+            key={item.uid}
             messedTime='10'
             nameUser={item.displayName}
             messUser='jchsd'
