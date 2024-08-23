@@ -9,7 +9,7 @@ const ContainerView: React.FC<ContainerProps> = ({ children }) => {
   
   return (
     <SafeAreaView style={styles.safeArea}>
-      <View style={[styles.container, { backgroundColor: 'white' }]}>
+      <View style={[styles.container]}>
         {children}
       </View>
     </SafeAreaView>
