@@ -1,4 +1,4 @@
-import { FlatList, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { FlatList, Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import ContainerView from '@/components/atoms/ContainerView'
 import { Header } from '@/components/molecules/Header'
@@ -57,12 +57,8 @@ const ChatListTemplate = () => {
     <ContainerView>
       <Header
         title='Chat'
-        iconLeft={
-          <AntDesign name="search1" size={24} color="black" />
-        }
-        iconRight={
-          <Image style={styles.img} source={require('@/assets/images/avt2.png')} />
-        } />
+        iconLeft={<AntDesign name="search1" size={24} color="black" />}
+        iconRight={<Image style={styles.img} source={require('@/assets/images/avt2.png')} />} />
 
       <View style={styles.containerUser}>
         <TouchableOpacity style={{ marginRight: 10 }}>
@@ -74,26 +70,28 @@ const ChatListTemplate = () => {
           horizontal
           data={users}
           keyExtractor={(item) => item.uid}
-          renderItem={({ item }) =>
-            <ItemListUser key={item.uid} img={require('@/assets/images/avt2.png')} name={item.displayName} />
-          }
+          renderItem={({ item }) => <ItemListUser key={item.uid} img={require('@/assets/images/avt2.png')} name={item.displayName} />}
         />
       </View>
 
-      <ScrollView>
-        {listUser.map((item) => (
-          <ItemMess
-            key={item.uid}
-            messedTime='10'
-            nameUser={item.displayName}
-            messUser='jchsd'
-            imgUser={require('@/assets/images/avt2.png')}
-            quantityMess='3'
-            onPress={() => moveChatDetail(item)} />
-        ))}
-
-      </ScrollView>
-
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={{ flex: 1 }}
+      >
+        <ScrollView contentContainerStyle={styles.scrollViewContent}>
+          {listUser.map((item) => (
+            <ItemMess
+              key={item.uid}
+              messedTime='10'
+              nameUser={item.displayName}
+              messUser='jchsd'
+              imgUser={require('@/assets/images/avt2.png')}
+              quantityMess='3'
+              onPress={() => moveChatDetail(item)}
+            />
+          ))}
+        </ScrollView>
+      </KeyboardAvoidingView>
     </ContainerView>
   )
 }
@@ -115,5 +113,7 @@ const styles = StyleSheet.create({
     height: 58,
     marginBottom: 10
   },
-
+  scrollViewContent: {
+    paddingBottom: 100
+  },
 })
