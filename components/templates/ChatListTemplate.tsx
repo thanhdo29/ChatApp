@@ -114,6 +114,6 @@ const styles = StyleSheet.create({
     marginBottom: 10
   },
   scrollViewContent: {
-    paddingBottom: 100
+    paddingBottom: 300
   },
 })
