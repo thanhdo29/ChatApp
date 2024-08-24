@@ -9,21 +9,22 @@ import { useRouter } from 'expo-router';
 import { addDoc, collection } from 'firebase/firestore';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth, db } from '@/firebaseConfig';
+import CustomAlert from '@/components/atoms/CustomAlert';
 
 const RegisterTemplate = () => {
     const router = useRouter();
-    const [displayName, setDisplayName] = useState<string>(''); 
+    const [displayName, setDisplayName] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [confirmPassword, setConfirmPassword] = useState<string>('');
 
     const handleRegister = async () => {
         if (!displayName || !email || !password || !confirmPassword) {
-            Alert.alert("Thông báo", "Vui lòng nhập đủ thông tin")
+            { CustomAlert("Notificaion", "Please enter enough information") }
             return
         }
         if (password !== confirmPassword) {
-            Alert.alert("Thông báo", "Mật khẩu không trùng khớp")
+            { CustomAlert("Notificaion", "Passwords do not match") }
             return
         }
 
@@ -60,8 +61,8 @@ const RegisterTemplate = () => {
             <View style={styles.containerContent}>
                 <EditTextWithLabel
                     label='Your name'
-                    value={displayName} 
-                    onChangeText={setDisplayName} 
+                    value={displayName}
+                    onChangeText={setDisplayName}
                 />
                 <EditTextWithLabel
                     label='Your email'

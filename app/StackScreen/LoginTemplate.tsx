@@ -9,6 +9,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '@/firebaseConfig';
 import useStorage from '@/hooks/useStorage';
 import { isNil } from 'lodash';
+import CustomAlert from '@/components/atoms/CustomAlert';
 
 const LoginTemplate = () => {
     const colors = getColors(useColorScheme())
@@ -21,7 +22,7 @@ const LoginTemplate = () => {
 
     const handleLogin = async () => {
         if (!email || !pass) {
-            Alert.alert("Thông báo", "Vui lòng nhập đủ thông tin")
+            CustomAlert("Notificaion", "Please enter enough information")
             return
         }
 
@@ -36,7 +37,7 @@ const LoginTemplate = () => {
             router.replace('/BottonTabs')
 
         } catch (error) {
-            Alert.alert("Thông báo", "Đăng nhập thất bại")
+            CustomAlert("Notificaion", "Login failed")
             console.error("Error login: " + error)
         }
     }
