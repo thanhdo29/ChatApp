@@ -13,7 +13,7 @@ type Props = {
     iconVideo?: string | React.ReactElement
 } & ViewProps
 export const ItemContact = (props: Props): React.ReactElement => {
-    const soureImg = typeof props.img === 'number' ? props.img : { uri: '' }
+    const soureImg = typeof props.img === 'number' ? props.img : { uri: props.img }
     const router = useRouter()
     const back = () => {
         if (router.canGoBack()) {
@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
     img: {
         height: 52,
         width: 52,
+        borderRadius:26,
         marginRight: 14,
         resizeMode: "contain"
     }
