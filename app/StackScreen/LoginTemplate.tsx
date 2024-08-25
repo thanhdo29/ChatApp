@@ -6,10 +6,11 @@ import { useRouter } from 'expo-router';
 import { EditTextWithLabel } from '@/components/atoms/EditTextWithLabel';
 import { PositiveButton } from '@/components/atoms/PositiveButton';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '@/firebaseConfig';
+import { auth, db } from '@/firebaseConfig';
 import useStorage from '@/hooks/useStorage';
 import { isNil } from 'lodash';
 import CustomAlert from '@/components/atoms/CustomAlert';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 
 const LoginTemplate = () => {
     const colors = getColors(useColorScheme())
@@ -29,10 +30,19 @@ const LoginTemplate = () => {
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, pass)
             const user = userCredential.user
-            if (!isNil(user)) {
-                await setObjectItem(USER_LOGIN_APP, user).catch(e => {
-                    console.error(USER_LOGIN_APP + ": " + e)
-                })
+
+            const userQuery = query(collection(db, 'users'), where('email', '==', email));
+            const querySnapshot = await getDocs(userQuery);
+            if (!querySnapshot.empty) {
+                const userDoc = querySnapshot.docs[0];
+                const userData = userDoc.data();
+                await setObjectItem(USER_LOGIN_APP, {
+                    uid: user.uid,
+                    displayName: userData.displayName,
+                    email: userData.email,
+                    dId: userData.dId,
+                    photoURL:userData.photoURL                    
+                });
             }
             router.replace('/BottonTabs')
 

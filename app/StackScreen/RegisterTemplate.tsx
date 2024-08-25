@@ -6,7 +6,7 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import { EditTextWithLabel } from '../../components/atoms/EditTextWithLabel';
 import { PositiveButton } from '../../components/atoms/PositiveButton';
 import { useRouter } from 'expo-router';
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, updateDoc } from 'firebase/firestore';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth, db } from '@/firebaseConfig';
 import CustomAlert from '@/components/atoms/CustomAlert';
@@ -33,12 +33,16 @@ const RegisterTemplate = () => {
             const user = userCredential.user;
 
             await updateProfile(user, { displayName })
-            await addDoc(collection(db, 'users'), {
+            const userDocRef = await addDoc(collection(db, 'users'), {
                 uid: user.uid,
                 displayName,
                 email: email,
             });
-            Alert.alert("Thông báo", "Đăng kí thành công")
+
+            await updateDoc(userDocRef, {
+                dId: userDocRef.id
+            });
+            CustomAlert("Notification", "Registered successfully")
         } catch (error) {
             console.error('Error register: ' + error)
         }
