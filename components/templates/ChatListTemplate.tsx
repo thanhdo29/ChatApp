@@ -58,19 +58,19 @@ const ChatListTemplate = () => {
       <Header
         title='Chat'
         iconLeft={<AntDesign name="search1" size={24} color="black" />}
-        iconRight={<Image style={styles.img} source={require('@/assets/images/avt2.png')} />} />
+        iconRight={<Image style={styles.img} source={{ uri: userLogin?.photoURL }} />} />
 
       <View style={styles.containerUser}>
         <TouchableOpacity style={{ marginRight: 10 }}>
-          <Image style={styles.imgUser} source={require('@/assets/images/avt2.png')} />
+          <Image style={styles.imgUser} source={{uri:userLogin?.photoURL}} />
           <Text style={{ fontSize: 14 }}>My status</Text>
         </TouchableOpacity>
         <FlatList
           showsHorizontalScrollIndicator={false}
           horizontal
-          data={users}
+          data={listUser}
           keyExtractor={(item) => item.uid}
-          renderItem={({ item }) => <ItemListUser key={item.uid} img={require('@/assets/images/avt2.png')} name={item.displayName} />}
+          renderItem={({ item }) => <ItemListUser key={item.uid} img={item.photoURL} name={item.displayName} />}
         />
       </View>
 
@@ -85,7 +85,7 @@ const ChatListTemplate = () => {
               messedTime='10'
               nameUser={item.displayName}
               messUser='jchsd'
-              imgUser={require('@/assets/images/avt2.png')}
+              imgUser={item.photoURL}
               quantityMess='3'
               onPress={() => moveChatDetail(item)}
             />
@@ -101,7 +101,8 @@ export default ChatListTemplate
 const styles = StyleSheet.create({
   img: {
     height: 44,
-    width: 44
+    width: 44,
+    borderRadius:22
   },
   containerUser: {
     flexDirection: "row",
@@ -111,6 +112,7 @@ const styles = StyleSheet.create({
   imgUser: {
     width: 58,
     height: 58,
+    borderRadius:29,
     marginBottom: 10
   },
   scrollViewContent: {

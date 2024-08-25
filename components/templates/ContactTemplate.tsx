@@ -75,7 +75,7 @@ const ContactTemplate = () => {
             style={styles.containerItemContact}
             namePerson={item.displayName}
             notePerson={'sjdhfs'}
-            img={require('@/assets/images/avt2.png')}
+            img={item.photoURL}
           />
         )}
         renderSectionHeader={({ section: { title } }) => (

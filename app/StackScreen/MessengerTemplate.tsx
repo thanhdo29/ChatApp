@@ -46,6 +46,8 @@ const MessengerTemplate = () => {
       setUserLogin(userLogin as User)
     }
     getUserLogin()
+    console.log(userMess);
+    
 
   }, [])
 
@@ -67,7 +69,7 @@ const MessengerTemplate = () => {
     <ContainerView>
       <View style={styles.container}>
         <ItemContact
-          img={require('@/assets/images/avt2.png')}
+          img={userMess.photoURL}
           namePerson={userMess.displayName}
           notePerson='Active now'
           iconPhone={<AntDesign name="phone" size={22} color="black" />}

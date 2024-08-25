@@ -3,7 +3,7 @@ import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { ItemContact } from "./ItemContact";
 import { ItemLeftMess } from "../molecules/ItemLeftMess";
 type Props = {
-    imgUser: number
+    imgUser: number| string
     nameUser: string
     messUser: string
     messedTime: string
